@@ -10,9 +10,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML>
 <html>
 <body>
-<h2>${user.userName } </h2>
-<div>
-  <a href="${ctx }/center/index2.html">点击我到index2页面</a>
-</div>
+<h2>${user.userName } this  is  a  two page</h2>
 </body>
 </html>
