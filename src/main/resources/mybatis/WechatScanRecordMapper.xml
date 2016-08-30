@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.webLean.dao.WechatScanRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.webLean.domain.WechatScanRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="sceneid" property="sceneid" jdbcType="BIGINT" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from v_wechat_scan_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.webLean.domain.WechatScanRecord" >
+    insert into v_wechat_scan_record (id, openid, sceneid
+      )
+    values (#{id,jdbcType=BIGINT}, #{openid,jdbcType=VARCHAR}, #{sceneid,jdbcType=BIGINT}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.webLean.domain.WechatScanRecord" >
+    update v_wechat_scan_record
+    set openid = #{openid,jdbcType=VARCHAR},
+      sceneid = #{sceneid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, openid, sceneid
+    from v_wechat_scan_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, openid, sceneid
+    from v_wechat_scan_record
+  </select>
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.webLean.dao.WechatKeyMapper" >
+  <resultMap id="BaseResultMap" type="com.webLean.domain.WechatKey" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="keyword" property="keyword" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="linkurl" property="linkurl" jdbcType="VARCHAR" />
+    <result column="picurl" property="picurl" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="mediaid" property="mediaid" jdbcType="VARCHAR" />
+    <result column="searchtype" property="searchtype" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from v_wechat_key
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.webLean.domain.WechatKey" >
+    insert into v_wechat_key (id, keyword, type, 
+      content, title, linkurl, 
+      picurl, description, createtime, 
+      mediaid, searchtype)
+    values (#{id,jdbcType=BIGINT}, #{keyword,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{linkurl,jdbcType=VARCHAR}, 
+      #{picurl,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{mediaid,jdbcType=VARCHAR}, #{searchtype,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.webLean.domain.WechatKey" >
+    update v_wechat_key
+    set keyword = #{keyword,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      linkurl = #{linkurl,jdbcType=VARCHAR},
+      picurl = #{picurl,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      mediaid = #{mediaid,jdbcType=VARCHAR},
+      searchtype = #{searchtype,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, keyword, type, content, title, linkurl, picurl, description, createtime, 
+    mediaid, searchtype
+    from v_wechat_key
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, keyword, type, content, title, linkurl, picurl, description, createtime, 
+    mediaid, searchtype
+    from v_wechat_key
+  </select>
+</mapper>

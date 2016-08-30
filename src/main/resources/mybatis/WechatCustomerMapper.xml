@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.webLean.dao.WechatCustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.webLean.domain.WechatCustomer" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="headimgurl" property="headimgurl" jdbcType="VARCHAR" />
+    <result column="subscribe" property="subscribe" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from v_wechat_customer
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.webLean.domain.WechatCustomer" >
+    insert into v_wechat_customer (id, nickname, openid, 
+      headimgurl, subscribe, sex, 
+      country, province, city
+      )
+    values (#{id,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, 
+      #{headimgurl,jdbcType=VARCHAR}, #{subscribe,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, 
+      #{country,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.webLean.domain.WechatCustomer" >
+    update v_wechat_customer
+    set nickname = #{nickname,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      headimgurl = #{headimgurl,jdbcType=VARCHAR},
+      subscribe = #{subscribe,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      country = #{country,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, nickname, openid, headimgurl, subscribe, sex, country, province, city
+    from v_wechat_customer
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, nickname, openid, headimgurl, subscribe, sex, country, province, city
+    from v_wechat_customer
+  </select>
+</mapper>

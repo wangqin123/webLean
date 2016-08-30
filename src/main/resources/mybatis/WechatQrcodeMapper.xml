@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.webLean.dao.WechatQrcodeMapper" >
+  <resultMap id="BaseResultMap" type="com.webLean.domain.WechatQrcode" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="customerid" property="customerid" jdbcType="BIGINT" />
+    <result column="qrcode" property="qrcode" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from v_wechat_qrcode
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.webLean.domain.WechatQrcode" >
+    insert into v_wechat_qrcode (id, customerid, qrcode
+      )
+    values (#{id,jdbcType=BIGINT}, #{customerid,jdbcType=BIGINT}, #{qrcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.webLean.domain.WechatQrcode" >
+    update v_wechat_qrcode
+    set customerid = #{customerid,jdbcType=BIGINT},
+      qrcode = #{qrcode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, customerid, qrcode
+    from v_wechat_qrcode
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, customerid, qrcode
+    from v_wechat_qrcode
+  </select>
+</mapper>

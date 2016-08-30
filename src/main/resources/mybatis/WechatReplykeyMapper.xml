@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.webLean.dao.WechatReplykeyMapper" >
+  <resultMap id="BaseResultMap" type="com.webLean.domain.WechatReplykey" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="keyid" property="keyid" jdbcType="BIGINT" />
+    <result column="replyid" property="replyid" jdbcType="BIGINT" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from v_wechat_replykey
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.webLean.domain.WechatReplykey" >
+    insert into v_wechat_replykey (id, keyid, replyid
+      )
+    values (#{id,jdbcType=BIGINT}, #{keyid,jdbcType=BIGINT}, #{replyid,jdbcType=BIGINT}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.webLean.domain.WechatReplykey" >
+    update v_wechat_replykey
+    set keyid = #{keyid,jdbcType=BIGINT},
+      replyid = #{replyid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, keyid, replyid
+    from v_wechat_replykey
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, keyid, replyid
+    from v_wechat_replykey
+  </select>
+</mapper>

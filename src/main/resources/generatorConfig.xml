@@ -51,8 +51,8 @@
     </table> -->
    <table  
     schema="dbo"
-    tableName="user_t"
-    domainObjectName="userT" 
+    tableName="v_wechat_scan_record"
+    domainObjectName="WechatScanRecord" 
     enableCountByExample="false" 
     enableUpdateByExample="false" 
     enableDeleteByExample="false" 
